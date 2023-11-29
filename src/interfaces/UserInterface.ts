@@ -1,4 +1,4 @@
-export interface Row {
+export interface User {
     id: string;
     data: string;
 }

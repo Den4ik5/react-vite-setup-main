@@ -32,10 +32,6 @@ const pages = [
         label: 'Add',
         to: '/add'
     },
-    {
-        label: 'Edit',
-        to: '/edit'
-    },
 ];
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -136,7 +132,7 @@ export const Sidebar = () => {
                         <MenuIcon/>
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Mini variant drawer
+                        Examples
                     </Typography>
                 </Toolbar>
             </AppBar>

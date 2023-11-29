@@ -1,14 +1,8 @@
-import { useEffect, useState } from 'react';
-import { getUser } from '../../../api/entity';
+import {useGetUserQuery} from '../../../api/userApi.ts';
 
 // @Deprecated
 export const useGetUser = (id: string) => {
-  const [user, setUser] = useState(null);
-
-  useEffect(async () => {
-    const user = await getUser(id);
-    setUser(user);
-  }, [id]);
-
-  return user;
+    const user = useGetUserQuery(id);
+    // console.log(user);
+    return user.data;
 };

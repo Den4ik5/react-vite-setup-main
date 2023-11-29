@@ -1,3 +1,4 @@
 export type GetUserResponse = {
-  id: string;
+    id: string;
+    data: string;
 };

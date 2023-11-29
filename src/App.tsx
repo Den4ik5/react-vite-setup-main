@@ -1,23 +1,23 @@
 import './App.scss';
-import { Route, Routes } from 'react-router-dom';
-import { TablePage } from './pages/TablePage.tsx';
-import { AddEntityPage } from './pages/AddEntityPage.tsx';
-import { EditEntityPage } from './pages/EditEntityPage.tsx';
-import { Layout } from './components/layouts/MainLayout/Layout.tsx';
+import {Route, Routes} from 'react-router-dom';
+
+import {Layout} from './components/layouts/MainLayout/Layout.tsx';
+import {TableLayout} from "./components/layouts/TableLayout/TableLayout.tsx";
+import {AddEntityLayout} from "./components/layouts/AddEntityLayout";
+import {EditEntityLayout} from "./components/layouts/EditEntityLayout/EditEntityLayout.tsx";
 
 function App() {
-  // const [count, setCount] = useState(0)
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" element={<TablePage />}></Route>
-          <Route path="/add" element={<AddEntityPage />}></Route>
-          <Route path="/edit" element={<EditEntityPage />}></Route>
-        </Route>
-      </Routes>
-    </>
-  );
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Layout/>}>
+                    <Route path="/" element={<TableLayout/>}></Route>
+                    <Route path="/add" element={<AddEntityLayout/>}></Route>
+                    <Route path="/edit/:userId" element={<EditEntityLayout/>}></Route>
+                </Route>
+            </Routes>
+        </>
+    );
 }
 
 export default App;

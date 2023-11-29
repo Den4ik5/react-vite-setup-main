@@ -1,19 +1,15 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Row} from "../../interfaces/RowInterface.ts";
+import {User} from "../../interfaces/UserInterface.ts";
 
-const initialState: Row[] = []
-export const rowsSlice = createSlice({
-    name: 'rows',
+const initialState: User[] = []
+export const usersSlice = createSlice({
+    name: 'users',
     initialState,
     reducers: {
-        getRows: (state, action: PayloadAction<Row[]>) => {
-            // TODO: fetch rows and return state
-            // state = {...action.payload};
+        deleteUser: (state, action: PayloadAction<User>) => {
+            state = state.filter((el: User) => el.id !== action.payload.id);
         },
-        deleteRow: (state, action: PayloadAction<Row>) => {
-            state = state.filter((el: Row) => el.id !== action.payload.id);
-        },
-        editRow: (state, action: PayloadAction<Row>) => {
+        editUser: (state, action: PayloadAction<User>) => {
             const el = state.find(el => el.id === action.payload.id);
             if (el) {
                 el.data = action.payload.data;
@@ -21,17 +17,16 @@ export const rowsSlice = createSlice({
                 state.push(action.payload);
             }
         },
-        addRow: (state, action: PayloadAction<Row>) => {
+        addUser: (state, action: PayloadAction<User>) => {
             state.push(action.payload);
         }
     }
 })
 
 export const {
-    getRows,
-    deleteRow,
-    editRow,
-    addRow
-} = rowsSlice.actions;
+    deleteUser,
+    editUser,
+    addUser
+} = usersSlice.actions;
 
-export default rowsSlice.reducer;
+export default usersSlice.reducer;

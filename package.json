@@ -17,6 +17,7 @@
     "@mui/styled-engine-sc": "^6.0.0-alpha.6",
     "@mui/system": "^5.14.18",
     "@reduxjs/toolkit": "^1.9.7",
+    "antd": "^5.11.5",
     "axios": "^1.6.2",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
