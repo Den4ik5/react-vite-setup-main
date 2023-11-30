@@ -1,9 +1,9 @@
 import {FormProvider, useForm} from "react-hook-form";
-import {FormInput} from "../../common/Form/FormInput";
+import {FormInput} from "../../common/FormInput";
 import Button from "@mui/material/Button";
-import {useAddUserMutation} from "../../../api/userApi.ts";
+import {useAddUserMutation} from "../../../api";
 import {User} from "../../../interfaces";
-import {defaultUser} from "../EditEntityLayout/EditEntityLayout.tsx";
+import {defaultUser} from "../EditEntityLayout";
 
 export const AddEntityLayout = () => {
     const [addUser] = useAddUserMutation()

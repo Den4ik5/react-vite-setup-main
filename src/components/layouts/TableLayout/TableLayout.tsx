@@ -1,11 +1,10 @@
 import {ColumnsType} from "antd/es/table";
-import {DataTable} from "../../common/Table";
-import {User} from "../../../interfaces/UserInterface.ts";
-import {useDeleteUserMutation, useGetAllUsersQuery} from "../../../api/userApi.ts";
+import {User} from "../../../interfaces";
+import {useDeleteUserMutation, useGetAllUsersQuery} from "../../../api";
 import {TableRouterCell} from "../../common/TableRouterCell";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {useMemo} from "react";
-
+import {DataTable} from "../../common/Table";
 
 export const TableLayout = () => {
     const {data, error, isLoading} = useGetAllUsersQuery(null);

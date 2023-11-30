@@ -1,10 +1,10 @@
 import {useParams} from "react-router-dom";
-import {useGetUserQuery, useUpdateUserMutation} from "../../../api/userApi.ts";
+import {useGetUserQuery, useUpdateUserMutation} from "../../../api";
 import {FormProvider, useForm} from "react-hook-form";
 import {User} from "../../../interfaces";
 import {useEffect, useMemo} from "react";
 import Button from "@mui/material/Button";
-import {FormInput} from "../../common/Form/FormInput";
+import {FormInput} from "../../common/FormInput";
 
 export const defaultUser: User = {
     age: 0, email: "", firstName: "", gender: "", id: "", lastName: ""

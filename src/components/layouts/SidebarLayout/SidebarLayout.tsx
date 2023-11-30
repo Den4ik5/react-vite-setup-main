@@ -102,7 +102,7 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
     }),
 );
 
-export const Sidebar = () => {
+export const SidebarLayout = () => {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
