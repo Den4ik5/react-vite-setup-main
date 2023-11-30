@@ -19,7 +19,7 @@ export const AddEntityLayout = () => {
     }
     return (
         <FormProvider {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="form">
                 <FormInput name='firstName' rules={{required: true}} label="Name" required={true}>
                 </FormInput>
                 <FormInput name="lastName" rules={{required: true}} label="Last name" required={true}>
