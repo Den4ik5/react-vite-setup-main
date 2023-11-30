@@ -13,7 +13,6 @@ export const TableLayout = () => {
     console.log(error);
     console.log(isLoading);
     const [deleteUser] = useDeleteUserMutation()
-
     const columns: ColumnsType<User> = useMemo(() => [
         {
             key: 'redirect',
@@ -30,9 +29,29 @@ export const TableLayout = () => {
             sorter: (a, b) => +a.id - +b.id,
         },
         {
-            title: 'Row',
-            dataIndex: 'data',
-            key: 'data',
+            title: 'Name',
+            dataIndex: 'firstName',
+            key: 'firstName',
+        },
+        {
+            title: 'Last Name',
+            dataIndex: 'lastName',
+            key: 'lastName',
+        },
+        {
+            title: 'Age',
+            dataIndex: 'age',
+            key: 'age',
+        },
+        {
+            title: 'Email',
+            dataIndex: 'email',
+            key: 'email',
+        },
+        {
+            title: 'Gender',
+            dataIndex: 'gender',
+            key: 'gender',
         },
         {
             key: 'delete',

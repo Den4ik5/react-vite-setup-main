@@ -3,12 +3,13 @@ import Typography from "@mui/material/Typography";
 import {InputLabel, TextField} from "@mui/material";
 import {TextFieldVariants} from "@mui/material/TextField/TextField";
 import {FormAction} from "../FormActions";
-import {useForm} from "react-hook-form";
+import {Controller, useForm} from "react-hook-form";
 
 export type FormProps = {
     fields: FormField[];
     header?: HeaderConfig;
     actions?: ActionConfig[];
+    defaultValue?: any
 }
 
 export type FormField = {
@@ -36,14 +37,18 @@ export type ActionConfig = {
 }
 
 export const Form = (props: FormProps) => {
-    const {fields, header, actions} = props;
-    const form = useForm();
-    const {register, formState} = form;
-    const {errors} = formState;
+    const {fields, header, actions, defaultValue} = props;
+    // const form = useForm();
+    // const {register, formState} = form;
+    // const {errors} = formState;
+
+    const {control, handleSubmit}
+        // = useForm<User>({ defaultValues });
+        = useForm({defaultValues: defaultValue});
 
     function handleChange() {
-        console.log(errors);
-        console.log(form.getValues());
+        // console.log(errors);
+        // console.log(form.getValues());
     }
 
     return (
@@ -59,19 +64,22 @@ export const Form = (props: FormProps) => {
                     return (
                         <Fragment key={el.name}>
                             {el.label && <InputLabel classes={el.classes}>{el.label}</InputLabel>}
-                            <TextField
-                                key={el.name}
-                                type={el.inputType}
-                                value={el.defaultValue}
-                                variant={el.variant}
-                                {...register(el.name, {
-                                    required: {
-                                        value: true,
-                                        message: el.requiredMessage ? el.requiredMessage : 'Required'
-                                    }
-                                })}
-                                onChange={handleChange}
-                            ></TextField>
+                            <Controller
+                                name={el.name}
+                                control={control}
+                                rules={{required: true}}
+                                render={({field}) => (
+                                    // <TextField {...field} label="Name" required={true} variant="outlined"/>
+                                    <TextField
+                                        key={el.name}
+                                        type={el.inputType}
+                                        value={el.defaultValue}
+                                        variant={el.variant}
+                                        onChange={handleChange}
+                                    ></TextField>
+                                )}
+                            />
+
                             {/*<p>{errors.root?.message}</p>*/}
                         </Fragment>
                     )

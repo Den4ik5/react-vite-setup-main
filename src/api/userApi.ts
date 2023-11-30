@@ -7,11 +7,11 @@ export const userApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3000/'}),
     tagTypes: ['Users'],
     endpoints: (builder) => ({
-        getUser: builder.query<GetUserResponse[], string>({
+        getUser: builder.query<GetUserResponse, string>({
             query: (id: string) => `/users/${id}`,
             providesTags: (result, error, id) => [{type: 'Posts', id}],
         }),
-        getAllUsers: builder.query({
+        getAllUsers: builder.query<GetUserResponse[], null>({
             query: () => `/users/`,
             providesTags: (result) => {
                 console.log(result);

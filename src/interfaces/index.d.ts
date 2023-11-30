@@ -1,2 +1,1 @@
-export type DateOnly = string;
-export type DateTime = string;
+export * from './UserInterface.ts'

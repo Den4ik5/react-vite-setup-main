@@ -1,4 +1,4 @@
-export type GetUserResponse = {
-    id: string;
-    data: string;
-};
+import {User} from "../interfaces";
+
+export interface GetUserResponse extends User {
+}
