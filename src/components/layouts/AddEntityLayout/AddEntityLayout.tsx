@@ -1,73 +1,40 @@
-import {Form, FormProps} from "../../common/Form";
+import {FormProvider, useForm} from "react-hook-form";
+import {FormInput} from "../../common/Form/FormInput";
+import Button from "@mui/material/Button";
+import {useAddUserMutation} from "../../../api/userApi.ts";
+import {User} from "../../../interfaces";
+import {defaultUser} from "../EditEntityLayout/EditEntityLayout.tsx";
 
 export const AddEntityLayout = () => {
-    const addEntityFormConfig: FormProps = {
-        fields: [
-            {
-                inputType: "text",
-                name: 'first name',
-                variant: "outlined",
-                required: true,
-                requiredMessage: 'Name is required',
-                label: 'first name',
-            },
-            {
-                inputType: "text",
-                name: 'last name',
-                variant: "outlined",
-                required: true,
-                requiredMessage: 'Last Name is required',
-                label: 'last name',
-            },
-            {
-                inputType: "number",
-                name: 'age',
-                variant: "outlined",
-                required: true,
-                requiredMessage: 'Age is required',
-                label: 'age',
-            },
-            {
-                inputType: "email",
-                name: 'email',
-                variant: "outlined",
-                required: true,
-                label: 'email',
-            },
-            {
-                inputType: "radio",
-                name: 'gender',
-                variant: "outlined",
-                required: true,
-                label: 'gender',
-            },
-        ],
-        header: {
-            text: 'Add User'
-        },
-        actions: [
-            {
-                name: 'cancel',
-                action: () => {
-                    alert(1)
-                },
-                variant: "outlined"
-            },
-            {
-                name: 'submit',
-                action: () => {
-                    alert(2)
-                },
-                variant: "outlined"
-            }
-        ]
+    const [addUser] = useAddUserMutation()
+    const form = useForm<User>(
+        {
+            defaultValues: defaultUser
+        }
+    );
+
+    const onSubmit = (data: User) => {
+        addUser(data);
+        console.log(data);
     }
     return (
-        <Form
-            fields={addEntityFormConfig.fields}
-            header={addEntityFormConfig.header}
-            actions={addEntityFormConfig.actions}>
-        </Form>
+        <FormProvider {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+                <FormInput name='firstName' rules={{required: true}} label="Name" required={true}>
+                </FormInput>
+                <FormInput name="lastName" rules={{required: true}} label="Last name" required={true}>
+                </FormInput>
+                <FormInput name="email" rules={{required: true}} label="Email" required={true}>
+                </FormInput>
+                <FormInput name="age" rules={{required: true}} label="Age" required={true}>
+                </FormInput>
+                <FormInput name="gender" rules={{required: true}} label="Gender" required={true}>
+                </FormInput>
+                <Button type="submit" variant="contained" color="primary">
+                    Submit
+                </Button>
+            </form>
+        </FormProvider>
     )
 }
 
