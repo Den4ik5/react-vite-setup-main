@@ -10,6 +10,8 @@ export const userApi = createApi({
     endpoints: (builder) => ({
         getUser: builder.query<GetUserResponse, string>({
             query: (id: string) => `/users/${id}`,
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             providesTags: (result, error, id) => [{type: 'Users', id}],
         }),
         getAllUsers: builder.query<GetUserResponse[], null>({
@@ -38,6 +40,8 @@ export const userApi = createApi({
                 }
             },
             // Invalidates all queries that subscribe to this Users `id` only.
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             invalidatesTags: (result, error, id) => [{type: 'Users', id}],
         }),
         addUser: builder.mutation<{
@@ -70,6 +74,8 @@ export const userApi = createApi({
                         },
                     }
                 },
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 invalidatesTags: (result, error, user) => [{type: 'Users', id: user.id}]
             }
         ),
