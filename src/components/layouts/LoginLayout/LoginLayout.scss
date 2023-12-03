@@ -1,0 +1,15 @@
+.login {
+  &-container {
+    padding: 100px !important;
+    background-color: #535bf2;
+    height: 100vh;
+  }
+
+  &-paper {
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
